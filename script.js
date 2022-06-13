@@ -126,10 +126,10 @@ function clicarBotaoEnviar() {
     precoTotal = precoBebida + precoComida + precoSobremesa;
     let mensagem =
       `Olá, gostaria de fazer o pedido: \n
-      - Prato: ${tituloComida} ${precoComida.toFixed(2)}
-      - Bebida: ${tituloBebida} ${precoBebida.toFixed(2)}
-      - Sobremesa: ${tituloSobremesa} ${precoSobremesa.toFixed(2)} \n
-      Total: ${precoTotal.toFixed(2)};`
+      - Prato: ${tituloComida}   R$ ${precoComida.toFixed(2)}
+      - Bebida: ${tituloBebida}   R$ ${precoBebida.toFixed(2)}
+      - Sobremesa: ${tituloSobremesa}   R$ ${precoSobremesa.toFixed(2)} \n
+      Total:   R$ ${precoTotal.toFixed(2)};`
     link = 'https://wa.me/+5591998238160?text=' + encodeURIComponent(mensagem);
     window.open(link);
   }
