@@ -278,7 +278,10 @@
         color: #FFFFFF;
         margin-top: 10px;
         justify-content: space-between;
-        text-align: center;
+    }
+
+    .pedido p:nth-child(2) {
+        text-align: right;
     }
 
     .total {
@@ -294,8 +297,11 @@
         color: #FFFFFF;
         margin-top: 10px;
         justify-content: space-between;
-        text-align: center;
         font-weight: 700;
+    }
+
+    .total p:nth-child(2) {
+        text-align: right;
     }
 
 }

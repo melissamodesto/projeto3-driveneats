@@ -6,6 +6,10 @@ let precoComida;
 let precoSobremesa;
 let precoTotal;
 
+let comidaSelecionada;
+let bebidaSelecionada;
+let sobremesaSelecionada;
+
 function selecionarComida(element) {
     const botaoClicado = document.querySelector('.comida .selecionado');
     const price = element.querySelector('.price').getAttribute('data-price')
@@ -73,10 +77,6 @@ function checkOption(element) {
     element.classList.add('active');
 }
 
-let comidaSelecionada;
-let bebidaSelecionada;
-let sobremesaSelecionada;
-
 function botaoVerde() {
     const botao = document.querySelector('.botao-confirma');
 
@@ -102,6 +102,7 @@ function fecharPedido() {
     const $precoTotal = document.querySelector('.preco-total');
 
     precoTotal = precoBebida + precoComida + precoSobremesa;
+    precoTotal = Number(precoTotal); 
 
     $painel.classList.remove('escondido'); 
 
@@ -109,10 +110,10 @@ function fecharPedido() {
     $bebida.innerHTML = tituloBebida;
     $sobremesa.innerHTML = tituloSobremesa;
 
-    $precoComida.innerHTML = precoComida;
-    $precoBebida.innerHTML = precoBebida;
-    $precoSobremesa.innerHTML = precoSobremesa;
-    $precoTotal.innerHTML = precoTotal;
+    $precoComida.innerHTML = precoComida.toFixed(2);
+    $precoBebida.innerHTML = precoBebida.toFixed(2);
+    $precoSobremesa.innerHTML = precoSobremesa.toFixed(2);
+    $precoTotal.innerHTML = precoTotal.toFixed(2);
 }
 
 function cancelar() {
