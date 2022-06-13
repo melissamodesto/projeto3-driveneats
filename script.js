@@ -1,50 +1,76 @@
-let comidaTitle;
-typeof "comidaTitle" === 'string';
-let bebidaTitle;
-let sobremesaTitle;
+let tituloBebida;
+let tituloComida;
+let tituloSobremesa;
+let precoBebida;
+let precoComida;
+let precoSobremesa;
+let precoTotal;
 
 function selecionarComida(element) {
+    const botaoClicado = document.querySelector('.comida .selecionado');
+    const price = element.querySelector('.price').getAttribute('data-price')
+    const title = element.querySelector('.title-food').innerText
 
     comidaSelecionada = element.innerHTML;
-    const botaoClicado = document.querySelector(".comida .selecionado");
 
     if(botaoClicado !== null) {
-        botaoClicado.classList.remove("selecionado");
+        botaoClicado.classList.remove('selecionado');
     }
-    element.classList.add("selecionado");
+
+    element.classList.add('selecionado');
+
+    tituloComida = title;
+    precoComida = Number(price);
+    
     botaoVerde();
 }
 
 function selecionarBebida(element) {
-    bebidaSelecionada = element.innerHTML;
-    const botaoClicado = document.querySelector(".bebidas .selecionado");
+    const botaoClicado = document.querySelector('.bebidas .selecionado');
+    const price = element.querySelector('.price').getAttribute('data-price')
+    const title = element.querySelector('.title-food').innerText
 
+    bebidaSelecionada = element.innerHTML;
+    
     if(botaoClicado !== null) {
-        botaoClicado.classList.remove("selecionado");
+        botaoClicado.classList.remove('selecionado');
     }
-    element.classList.add("selecionado");
+    
+    element.classList.add('selecionado');
+
+    tituloBebida = title;
+    precoBebida = Number(price);
+    
     botaoVerde();
 }
 
 function selecionarSobremesa(element) {
-    sobremesaSelecionada = element.innerHTML;
-    const botaoClicado = document.querySelector(".sobremesa .selecionado");
+    const botaoClicado = document.querySelector('.sobremesa .selecionado');
+    const price = element.querySelector('.price').getAttribute('data-price')
+    const title = element.querySelector('.title-food').innerText
 
+    sobremesaSelecionada = element.innerHTML;
+    
     if(botaoClicado !== null) {
-        botaoClicado.classList.remove("selecionado");
+        botaoClicado.classList.remove('selecionado');
     }
-    element.classList.add("selecionado");
+    
+    element.classList.add('selecionado');
+
+    tituloSobremesa = title;
+    precoSobremesa = Number(price);
+
     botaoVerde();
 }
 
 function checkOption(element) {
-    const botaoClicado = document.querySelector(".active");
+    const botaoClicado = document.querySelector('.active');
 
     if(botaoClicado !== null) {
-        botaoClicado.classList.remove("active")
-        botaoClicado.classList.remove("escondido")
+        botaoClicado.classList.remove('active')
+        botaoClicado.classList.remove('escondido')
     }
-    element.classList.add("active");
+    element.classList.add('active');
 }
 
 let comidaSelecionada;
@@ -52,53 +78,57 @@ let bebidaSelecionada;
 let sobremesaSelecionada;
 
 function botaoVerde() {
-    const botao = document.querySelector(".botao-confirma");
+    const botao = document.querySelector('.botao-confirma');
 
     comidaSelecionada = document.querySelector('.selecionado');
     bebidaSelecionada = document.querySelector('.bebidas .selecionado');
     sobremesaSelecionada = document.querySelector('.sobremesa .selecionado');
-    mensagem = document.querySelector(".mensagem");
+    mensagem = document.querySelector('.mensagem');
     
     if(comidaSelecionada && bebidaSelecionada && sobremesaSelecionada) {
-        botao.classList.add("botao-verde");
-        mensagem.innerHTML = "Fazer pedido";
+        botao.classList.add('botao-verde');
+        mensagem.innerHTML = 'Fazer pedido';
     }
 }
 
-let pedi
+function fecharPedido() {
+    const $painel = document.querySelector('.tela-confirmacao');
+    const $comida = document.querySelector('.pedido-comida');
+    const $bebida = document.querySelector('.pedido-bebida');
+    const $sobremesa = document.querySelector('.pedido-sobremesa');
+    const $precoComida = document.querySelector('.preco-comida');
+    const $precoBebida = document.querySelector('.preco-bebida');
+    const $precoSobremesa = document.querySelector('.preco-sobremesa');
+    const $precoTotal = document.querySelector('.preco-total');
 
-/* function fecharPedido() {
-    let painel = document.querySelector(".tela-confirmacao");
+    precoTotal = precoBebida + precoComida + precoSobremesa;
 
-    painel.classList.remove("escondido"); 
+    $painel.classList.remove('escondido'); 
 
-    comidaTitle = document.querySelector('.title-food');
-    
-    let comida = document.querySelector('.pedido-comida');
+    $comida.innerHTML = tituloComida;
+    $bebida.innerHTML = tituloBebida;
+    $sobremesa.innerHTML = tituloSobremesa;
 
-    comida.innerHTML = `${comidaTitle}`;
+    $precoComida.innerHTML = precoComida;
+    $precoBebida.innerHTML = precoBebida;
+    $precoSobremesa.innerHTML = precoSobremesa;
+    $precoTotal.innerHTML = precoTotal;
 }
 
 function cancelar() {
     const cancelar = document.querySelector('.tela-confirmacao');
-
     cancelar.classList.add('escondido');
-} */
-
-let precoBebida = document.innerHTML;
-let precoComida;
-let precoSobremesa
+}
 
 function clicarBotaoEnviar() {
 
-
-    let preco = precoBebida + precoComida + precoSobremesa;
+    precoTotal = precoBebida + precoComida + precoSobremesa;
     let mensagem =
-      "Olá, gostaria de fazer o pedido: \n\
-      - Prato: Frango Yin Yang \n\
-      - Bebida: Coquinha Gelada \n\
-      - Sobremesa: Pudim \n\
-      Total: R$ " + preco;
-    link = "https://wa.me/+5591998238160?text=" + encodeURIComponent(mensagem);
+      `Olá, gostaria de fazer o pedido: \n
+      - Prato: ${tituloComida} ${precoComida}
+      - Bebida: ${tituloBebida} ${precoBebida} \n
+      - Sobremesa: ${tituloSobremesa} ${precoSobremesa} \n
+      Total: ${precoTotal};`
+    link = 'https://wa.me/+5591998238160?text=' + encodeURIComponent(mensagem);
     window.open(link);
   }

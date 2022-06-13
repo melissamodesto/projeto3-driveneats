@@ -71,8 +71,7 @@
         height: 39px;
         font-size: 15px;
         color: #A6A6A6;
-        font-weight: 100;
-        
+        font-weight: 100;   
     }
 
     .lista-opcoes {
@@ -178,7 +177,6 @@
         background-color: #32B72F;
     }
 
-
     .selecionado {
         border-color: #32B72F;
     }
@@ -281,6 +279,23 @@
         margin-top: 10px;
         justify-content: space-between;
         text-align: center;
+    }
+
+    .total {
+        display: flex;
+        justify-content: space-around;
+        margin-left: 20px;
+    }
+
+    .total p {
+        width: 100%;
+        font-size: 22px;
+        font-family: 'Roboto', sans-serif;
+        color: #FFFFFF;
+        margin-top: 10px;
+        justify-content: space-between;
+        text-align: center;
+        font-weight: 700;
     }
 
 }
